@@ -1,5 +1,7 @@
 # flutter_mobile_vision_2
 
+https://pub.dartlang.org/packages/flutter_mobile_vision_2
+
 This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision_2 
 
 Thanks to Edufolly
@@ -80,7 +82,7 @@ To use this plugin :
   dependencies:
     flutter:
       sdk: flutter
-    flutter_mobile_vision_2: ^0.1.8
+    flutter_mobile_vision_2: ^0.1.9
 ```
 
 * add FlutterMobileVision.start() to initState():
@@ -144,7 +146,7 @@ For Android, you must do the following before you can use the plugin:
 
 * Add the Barcode activity to your AndroidManifest.xml (after other activity nodes)
 
-    `<activity android:name="io.github.edufolly.fluttermobilevision.barcode.BarcodeCaptureActivity" />`
+    `<activity android:name="ng.com.piccmaq.flutter.flutter_mobile_vision_2.barcode.BarcodeCaptureActivity" />`
 
 ### iOS
 
@@ -186,7 +188,7 @@ For Android, you must do the following before you can use the plugin:
 
 * Add the OCR activity to your AndroidManifest.xml (after other activity nodes)
 
-   `<activity android:name="io.github.edufolly.fluttermobilevision.ocr.OcrCaptureActivity" />`
+   `<activity android:name="ng.com.piccmaq.flutter.flutter_mobile_vision_2.ocr.OcrCaptureActivity" />`
 
 ### iOS
 
@@ -227,7 +229,7 @@ For Android, you must do the following before you can use the plugin:
 
 * Add the Face Detection activity to your AndroidManifest.xml (after other activity nodes)
 
-   `<activity android:name="io.github.edufolly.fluttermobilevision.face.FaceCaptureActivity" />`
+   `<activity android:name="ng.com.piccmaq.flutter.flutter_mobile_vision_2.face.FaceCaptureActivity" />`
 
 ### iOS
 
