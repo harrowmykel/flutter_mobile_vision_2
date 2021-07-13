@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_mobile_vision_2/flutter_mobile_vision_2.dart';
+
 import 'barcode_detail.dart';
 import 'face_detail.dart';
 import 'ocr_text_detail.dart';
@@ -19,35 +21,56 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-///
-///
-///
 class _MyAppState extends State<MyApp> {
-  int _cameraBarcode = FlutterMobileVision.CAMERA_BACK;
-  int _onlyFormatBarcode = Barcode.ALL_FORMATS;
+  String _platformVersion = 'Unknown';
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    // We also handle the message potentially returning null.
+    try {
+      platformVersion = await FlutterMobileVision.platformVersion ??
+          'Unknown platform version';
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
+    });
+  }
+
+  int? _cameraBarcode = FlutterMobileVision.CAMERA_BACK;
+  int? _onlyFormatBarcode = Barcode.ALL_FORMATS;
   bool _autoFocusBarcode = true;
   bool _torchBarcode = false;
   bool _multipleBarcode = false;
   bool _waitTapBarcode = false;
   bool _showTextBarcode = false;
-  Size _previewBarcode;
+  Size? _previewBarcode;
   List<Barcode> _barcodes = [];
 
-  int _cameraOcr = FlutterMobileVision.CAMERA_BACK;
+  int? _cameraOcr = FlutterMobileVision.CAMERA_BACK;
   bool _autoFocusOcr = true;
   bool _torchOcr = false;
   bool _multipleOcr = false;
   bool _waitTapOcr = false;
   bool _showTextOcr = true;
-  Size _previewOcr;
+  Size? _previewOcr;
   List<OcrText> _textsOcr = [];
 
-  int _cameraFace = FlutterMobileVision.CAMERA_FRONT;
+  int? _cameraFace = FlutterMobileVision.CAMERA_FRONT;
   bool _autoFocusFace = true;
   bool _torchFace = false;
   bool _multipleFace = true;
   bool _showTextFace = true;
-  Size _previewFace;
+  Size? _previewFace;
   List<Face> _faces = [];
 
   ///
@@ -56,10 +79,14 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    initPlatformState();
     FlutterMobileVision.start().then((previewSizes) => setState(() {
-          _previewBarcode = previewSizes[_cameraBarcode].first;
-          _previewOcr = previewSizes[_cameraOcr].first;
-          _previewFace = previewSizes[_cameraFace].first;
+          if (previewSizes[_cameraBarcode] == null) {
+            return;
+          }
+          _previewBarcode = previewSizes[_cameraBarcode]!.first;
+          _previewOcr = previewSizes[_cameraOcr]!.first;
+          _previewFace = previewSizes[_cameraFace]!.first;
         }));
   }
 
@@ -136,7 +163,7 @@ class _MyAppState extends State<MyApp> {
   List<DropdownMenuItem<Size>> _getPreviewSizes(int facing) {
     List<DropdownMenuItem<Size>> previewItems = [];
 
-    List<Size> sizes = FlutterMobileVision.getPreviewSizes(facing);
+    List<Size>? sizes = FlutterMobileVision.getPreviewSizes(facing);
 
     if (sizes != null) {
       sizes.forEach((size) {
@@ -179,7 +206,7 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
+      child: DropdownButton<int>(
         items: _getCameras(),
         onChanged: (value) {
           _previewBarcode = null;
@@ -203,8 +230,8 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
-        items: _getPreviewSizes(_cameraBarcode),
+      child: DropdownButton<Size>(
+        items: _getPreviewSizes(_cameraBarcode ?? 0),
         onChanged: (value) {
           setState(() => _previewBarcode = value);
         },
@@ -226,7 +253,7 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
+      child: DropdownButton<int>(
         items: _getFormats(),
         onChanged: (value) => setState(
           () => _onlyFormatBarcode = value,
@@ -278,7 +305,7 @@ class _MyAppState extends State<MyApp> {
           right: 18.0,
           bottom: 12.0,
         ),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: _scan,
           child: Text('SCAN!'),
         ),
@@ -313,12 +340,12 @@ class _MyAppState extends State<MyApp> {
       barcodes = await FlutterMobileVision.scan(
         flash: _torchBarcode,
         autoFocus: _autoFocusBarcode,
-        formats: _onlyFormatBarcode,
+        formats: _onlyFormatBarcode ?? Barcode.ALL_FORMATS,
         multiple: _multipleBarcode,
         waitTap: _waitTapBarcode,
         showText: _showTextBarcode,
-        preview: _previewBarcode,
-        camera: _cameraBarcode,
+        preview: _previewBarcode ?? FlutterMobileVision.PREVIEW,
+        camera: _cameraBarcode ?? FlutterMobileVision.CAMERA_BACK,
         fps: 15.0,
       );
     } on Exception {
@@ -350,7 +377,7 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
+      child: DropdownButton<int>(
         items: _getCameras(),
         onChanged: (value) {
           _previewOcr = null;
@@ -374,8 +401,8 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
-        items: _getPreviewSizes(_cameraOcr),
+      child: DropdownButton<Size>(
+        items: _getPreviewSizes(_cameraOcr ?? 0),
         onChanged: (value) {
           setState(() => _previewOcr = value);
         },
@@ -420,7 +447,7 @@ class _MyAppState extends State<MyApp> {
           right: 18.0,
           bottom: 12.0,
         ),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: _read,
           child: Text('READ!'),
         ),
@@ -458,8 +485,8 @@ class _MyAppState extends State<MyApp> {
         multiple: _multipleOcr,
         waitTap: _waitTapOcr,
         showText: _showTextOcr,
-        preview: _previewOcr,
-        camera: _cameraOcr,
+        preview: _previewOcr ?? FlutterMobileVision.PREVIEW,
+        camera: _cameraOcr ?? FlutterMobileVision.CAMERA_BACK,
         fps: 2.0,
       );
     } on Exception {
@@ -491,7 +518,7 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
+      child: DropdownButton<int>(
         items: _getCameras(),
         onChanged: (value) {
           _previewFace = null;
@@ -515,8 +542,8 @@ class _MyAppState extends State<MyApp> {
         left: 18.0,
         right: 18.0,
       ),
-      child: DropdownButton(
-        items: _getPreviewSizes(_cameraFace),
+      child: DropdownButton<Size>(
+        items: _getPreviewSizes(_cameraFace ?? 0),
         onChanged: (value) {
           setState(() => _previewFace = value);
         },
@@ -555,7 +582,7 @@ class _MyAppState extends State<MyApp> {
           right: 18.0,
           bottom: 12.0,
         ),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: _face,
           child: Text('DETECT!'),
         ),
@@ -586,8 +613,8 @@ class _MyAppState extends State<MyApp> {
         autoFocus: _autoFocusFace,
         multiple: _multipleFace,
         showText: _showTextFace,
-        preview: _previewFace,
-        camera: _cameraFace,
+        preview: _previewFace ?? FlutterMobileVision.PREVIEW,
+        camera: _cameraFace ?? FlutterMobileVision.CAMERA_BACK,
         fps: 15.0,
       );
     } on Exception {

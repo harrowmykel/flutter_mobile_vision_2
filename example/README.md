@@ -1,6 +1,6 @@
-# flutter_mobile_vision_example
+# flutter_mobile_vision_2_example
 
-Demonstrates how to use the flutter_mobile_vision plugin.
+Demonstrates how to use the flutter_mobile_vision_2 plugin.
 
 ## Getting Started
 

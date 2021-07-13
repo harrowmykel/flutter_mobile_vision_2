@@ -1,6 +1,9 @@
-# flutter_mobile_vision
+# flutter_mobile_vision_2
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/26accf32303f4260ab867afb2b664bcd)](https://app.codacy.com/app/edufolly/flutter_mobile_vision?utm_source=github.com&utm_medium=referral&utm_content=edufolly/flutter_mobile_vision&utm_campaign=badger) [![pub package](https://img.shields.io/pub/v/flutter_mobile_vision.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision)
+This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision 
+Thanks to Edufolly
+
+[![pub package](https://img.shields.io/pub/v/flutter_mobile_vision.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision_2)
 
 Flutter implementation for Google Mobile Vision.
 
