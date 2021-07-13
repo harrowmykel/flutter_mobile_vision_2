@@ -1,1 +1,0 @@
-flutter create --org ng.com.piccmaq.flutter --template=plugin --platforms=android,ios -a java -i objc flutter_mobile_vision_2
