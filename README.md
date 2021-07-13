@@ -1,6 +1,6 @@
 # flutter_mobile_vision_2
 
-This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision 
+This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision_2 
 
 Thanks to Edufolly
 
@@ -70,7 +70,7 @@ Liked? :star: Star the repo to support the project!
 
 ## Usage
 
-[Example](https://github.com/edufolly/flutter_mobile_vision/blob/master/example/lib/main.dart)
+[Example](https://github.com/edufolly/flutter_mobile_vision_2/blob/master/example/lib/main.dart)
 
 To use this plugin :
 
@@ -80,7 +80,7 @@ To use this plugin :
   dependencies:
     flutter:
       sdk: flutter
-    flutter_mobile_vision: ^0.1.3
+    flutter_mobile_vision_2: ^0.1.7+1
 ```
 
 * add FlutterMobileVision.start() to initState():
