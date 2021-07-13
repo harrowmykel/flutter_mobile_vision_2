@@ -3,7 +3,7 @@
 This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision 
 Thanks to Edufolly
 
-[![pub package](https://img.shields.io/pub/v/flutter_mobile_vision.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision_2)
+[![pub package](https://img.shields.io/pub/v/flutter_mobile_vision_2.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision_2)
 
 Flutter implementation for Google Mobile Vision.
 
