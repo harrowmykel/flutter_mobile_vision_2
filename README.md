@@ -80,7 +80,7 @@ To use this plugin :
   dependencies:
     flutter:
       sdk: flutter
-    flutter_mobile_vision_2: ^0.1.7+1
+    flutter_mobile_vision_2: ^0.1.8
 ```
 
 * add FlutterMobileVision.start() to initState():
