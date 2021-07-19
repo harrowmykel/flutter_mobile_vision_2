@@ -1,29 +1,21 @@
-// library flutter_mobile_vision_2;
-
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 
 class FlutterMobileVision {
-  static const MethodChannel _channel =
-      const MethodChannel('flutter_mobile_vision_2');
+  static const MethodChannel _channel = MethodChannel('flutter_mobile_vision');
 
   static const int CAMERA_BACK = 0;
   static const int CAMERA_FRONT = 1;
 
   static const Size PREVIEW = Size(640, 480);
+  static const Size SCAN_AREA = Size(0, 0);
 
   static final Map<int, List<Size>> _previewSizes = {};
 
   ///
   ///
   ///
-
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-
   static Future<Map<int, List<Size>>> start() async {
     var value = await _channel.invokeMethod('start');
     value.forEach((k, v) {
@@ -37,7 +29,7 @@ class FlutterMobileVision {
   ///
   ///
   ///
-  static List<Size>? getPreviewSizes(int facing) {
+  static List<Size> getPreviewSizes(int facing) {
     if (_previewSizes.containsKey(facing)) {
       return _previewSizes[facing];
     }
@@ -55,6 +47,7 @@ class FlutterMobileVision {
     bool waitTap = false,
     bool showText = false,
     Size preview = PREVIEW,
+    Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
     double fps = 15.0,
   }) async {
@@ -68,8 +61,10 @@ class FlutterMobileVision {
       'multiple': multiple,
       'waitTap': waitTap,
       'showText': showText,
-      'previewWidth': preview.width,
-      'previewHeight': preview.height,
+      'previewWidth': preview != null ? preview.width : PREVIEW.width,
+      'previewHeight': preview != null ? preview.height : PREVIEW.height,
+      'scanAreaWidth': scanArea != null ? scanArea.width : SCAN_AREA.width,
+      'scanAreaHeight': scanArea != null ? scanArea.height : SCAN_AREA.height,
       'camera': camera,
       'fps': fps,
     };
@@ -89,6 +84,7 @@ class FlutterMobileVision {
     bool waitTap = false,
     bool showText = true,
     Size preview = PREVIEW,
+    Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
     double fps = 2.0,
   }) async {
@@ -98,8 +94,10 @@ class FlutterMobileVision {
       'multiple': multiple,
       'waitTap': waitTap,
       'showText': showText,
-      'previewWidth': preview.width,
-      'previewHeight': preview.height,
+      'previewWidth': preview != null ? preview.width : PREVIEW.width,
+      'previewHeight': preview != null ? preview.height : PREVIEW.height,
+      'scanAreaWidth': scanArea != null ? scanArea.width : SCAN_AREA.width,
+      'scanAreaHeight': scanArea != null ? scanArea.height : SCAN_AREA.height,
       'camera': camera,
       'fps': fps,
     };
@@ -118,6 +116,7 @@ class FlutterMobileVision {
     bool multiple = true,
     bool showText = true,
     Size preview = PREVIEW,
+    Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
     double fps = 15.0,
   }) async {
@@ -126,8 +125,10 @@ class FlutterMobileVision {
       'autoFocus': autoFocus,
       'multiple': multiple,
       'showText': showText,
-      'previewWidth': preview.width,
-      'previewHeight': preview.height,
+      'previewWidth': preview != null ? preview.width : PREVIEW.width,
+      'previewHeight': preview != null ? preview.height : PREVIEW.height,
+      'scanAreaWidth': scanArea != null ? scanArea.width : SCAN_AREA.width,
+      'scanAreaHeight': scanArea != null ? scanArea.height : SCAN_AREA.height,
       'camera': camera,
       'fps': fps,
     };
