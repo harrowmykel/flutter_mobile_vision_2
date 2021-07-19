@@ -23,21 +23,14 @@ public class FlutterMobileVisionPlugin implements FlutterPlugin, MethodCallHandl
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
-  private MethodChannel channel;
     private static final String CHANNEL = "flutter_mobile_vision_2";
+    
+    private MethodChannel channel;
 
     private FlutterMobileVisionDelegate delegate;
     private FlutterPluginBinding pluginBinding;
     private ActivityPluginBinding activityBinding;
     private Activity activity;
-
-  @Override
-  public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        pluginBinding = flutterPluginBinding;
-    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_mobile_vision_2");
-    channel.setMethodCallHandler(this);
-  }
-
 
     @SuppressWarnings("unused")
     public static void registerWith(Registrar registrar) {
@@ -47,9 +40,16 @@ public class FlutterMobileVisionPlugin implements FlutterPlugin, MethodCallHandl
     }
 
     @Override
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+          pluginBinding = flutterPluginBinding;
+      channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_mobile_vision_2");
+      channel.setMethodCallHandler(this);
+    }  
+
+    @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
         pluginBinding = null;
-    channel.setMethodCallHandler(null);
+        channel.setMethodCallHandler(null);
     }
 
 
@@ -164,13 +164,12 @@ public class FlutterMobileVisionPlugin implements FlutterPlugin, MethodCallHandl
         MethodChannel.Result result = new MethodResultWrapper(rawResult);
 
         switch (call.method) {
-            case "getPlatformVersion":
-               
-        result.success("Android " + android.os.Build.VERSION.RELEASE);
+            case "getPlatformVersion":       
+                result.success("Android " + android.os.Build.VERSION.RELEASE);
                 break;
-                case "start":
-                    delegate.start(call, result);
-                    break;
+            case "start":
+                delegate.start(call, result);
+                break;
 
             case "scan":
                 delegate.scan(call, result);
