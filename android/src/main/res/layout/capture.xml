@@ -15,6 +15,10 @@
             android:id="@+id/graphic_overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <ng.com.piccmaq.flutter.flutter_mobile_vision_2.ui.GraphicOverlay
+            android:id="@+id/scan_area_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </ng.com.piccmaq.flutter.flutter_mobile_vision_2.ui.CameraSourcePreview>
 
