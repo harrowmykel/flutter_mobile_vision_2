@@ -14,7 +14,7 @@ Based on [Google Mobile Vision](https://developers.google.com/vision/).
 ---------------------------
 
 If you are migrating from edufolly's package, please note the following changes
-
+[1]
 ```dart
 import 'package:fluttermobilevision/fluttermobilevision.dart';
 ```
@@ -23,7 +23,9 @@ import 'package:fluttermobilevision/fluttermobilevision.dart';
 ```dart
 import 'package:flutter_mobile_vision_2/flutter_mobile_vision_2.dart';
 ```
-so update your imports
+so update your imports.
+
+[2]
 
 ```dart
 io.github.edufolly.fluttermobilevision
