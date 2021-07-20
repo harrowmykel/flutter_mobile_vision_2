@@ -2,9 +2,35 @@
 
 https://pub.dartlang.org/packages/flutter_mobile_vision_2
 
-This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision_2 
-
+This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision
 Thanks to Edufolly
+
+---------------------------
+
+If you are migrating from edufolly's package, please note the following changes
+
+```dart
+import 'package:fluttermobilevision/fluttermobilevision.dart';
+```
+  has been changed to
+
+```dart
+import 'package:flutter_mobile_vision_2/flutter_mobile_vision_2.dart';
+```
+so update your imports
+
+```dart
+io.github.edufolly.fluttermobilevision
+```
+  has been changed to
+
+```dart
+ ng.com.piccmaq.flutter.flutter_mobile_vision_2
+```
+
+so update your AndroidManifest.xml
+
+---------------------------
 
 [![pub package](https://img.shields.io/pub/v/flutter_mobile_vision_2.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision_2)
 

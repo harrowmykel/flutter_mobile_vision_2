@@ -1,3 +1,7 @@
+## [0.1.10] - 2021-07-20
+
+* implemented adding scan area overlay. thanks to @SamuelHaws
+
 ## [0.1.9] - 2021-07-13
 
 * updated readme.md.
