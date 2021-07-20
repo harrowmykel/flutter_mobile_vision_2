@@ -5,6 +5,12 @@ https://pub.dartlang.org/packages/flutter_mobile_vision_2
 This is a simple non-null migration for https://github.com/edufolly/flutter_mobile_vision
 Thanks to Edufolly
 
+[![pub package](https://img.shields.io/pub/v/flutter_mobile_vision_2.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision_2)
+
+Flutter implementation for Google Mobile Vision.
+
+Based on [Google Mobile Vision](https://developers.google.com/vision/).
+
 ---------------------------
 
 If you are migrating from edufolly's package, please note the following changes
@@ -31,12 +37,6 @@ io.github.edufolly.fluttermobilevision
 so update your AndroidManifest.xml
 
 ---------------------------
-
-[![pub package](https://img.shields.io/pub/v/flutter_mobile_vision_2.svg)](https://pub.dartlang.org/packages/flutter_mobile_vision_2)
-
-Flutter implementation for Google Mobile Vision.
-
-Based on [Google Mobile Vision](https://developers.google.com/vision/).
 
 [Android Samples](https://github.com/googlesamples/android-vision) -=- [iOS Samples](https://github.com/googlesamples/ios-vision)
 
