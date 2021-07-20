@@ -11,6 +11,10 @@ Flutter implementation for Google Mobile Vision.
 
 Based on [Google Mobile Vision](https://developers.google.com/vision/).
 
+[Android Samples](https://github.com/googlesamples/android-vision) -=- [iOS Samples](https://github.com/googlesamples/ios-vision)
+
+Liked? :star: Star the repo to support the project!
+
 ---------------------------
 
 ## Migration from fluttermobilevision by edufolly
@@ -42,10 +46,6 @@ io.github.edufolly.fluttermobilevision
 so update your AndroidManifest.xml
 
 ---------------------------
-
-[Android Samples](https://github.com/googlesamples/android-vision) -=- [iOS Samples](https://github.com/googlesamples/ios-vision)
-
-Liked? :star: Star the repo to support the project!
 
 ## Features
 
