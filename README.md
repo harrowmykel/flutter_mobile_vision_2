@@ -13,6 +13,8 @@ Based on [Google Mobile Vision](https://developers.google.com/vision/).
 
 ---------------------------
 
+## Migration from fluttermobilevision by edufolly
+
 If you are migrating from edufolly's package, please note the following changes.
 
 [1]
