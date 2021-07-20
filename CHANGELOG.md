@@ -1,3 +1,7 @@
+## [0.1.11] - 2021-07-20
+
+* updated readme.md to show migration tip
+
 ## [0.1.10] - 2021-07-20
 
 * implemented adding scan area overlay. thanks to @SamuelHaws
