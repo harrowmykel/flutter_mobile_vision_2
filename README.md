@@ -13,7 +13,8 @@ Based on [Google Mobile Vision](https://developers.google.com/vision/).
 
 ---------------------------
 
-If you are migrating from edufolly's package, please note the following changes
+If you are migrating from edufolly's package, please note the following changes.
+
 [1]
 ```dart
 import 'package:fluttermobilevision/fluttermobilevision.dart';
