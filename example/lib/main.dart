@@ -336,6 +336,7 @@ class _MyAppState extends State<MyApp> {
   ///
   Future<Null> _scan() async {
     List<Barcode> barcodes = [];
+    Size _scanpreviewOcr = _previewOcr ?? FlutterMobileVision.PREVIEW;
     try {
       barcodes = await FlutterMobileVision.scan(
         flash: _torchBarcode,
@@ -345,6 +346,7 @@ class _MyAppState extends State<MyApp> {
         waitTap: _waitTapBarcode,
         showText: _showTextBarcode,
         preview: _previewBarcode ?? FlutterMobileVision.PREVIEW,
+        scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
         camera: _cameraBarcode ?? FlutterMobileVision.CAMERA_BACK,
         fps: 15.0,
       );
@@ -478,6 +480,7 @@ class _MyAppState extends State<MyApp> {
   ///
   Future<Null> _read() async {
     List<OcrText> texts = [];
+    Size _scanpreviewOcr = _previewOcr ?? FlutterMobileVision.PREVIEW;
     try {
       texts = await FlutterMobileVision.read(
         flash: _torchOcr,
@@ -486,6 +489,7 @@ class _MyAppState extends State<MyApp> {
         waitTap: _waitTapOcr,
         showText: _showTextOcr,
         preview: _previewOcr ?? FlutterMobileVision.PREVIEW,
+        scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
         camera: _cameraOcr ?? FlutterMobileVision.CAMERA_BACK,
         fps: 2.0,
       );
@@ -606,6 +610,7 @@ class _MyAppState extends State<MyApp> {
   /// Face Method
   ///
   Future<Null> _face() async {
+    Size _scanpreviewOcr = _previewOcr ?? FlutterMobileVision.PREVIEW;
     List<Face> faces = [];
     try {
       faces = await FlutterMobileVision.face(
@@ -614,6 +619,7 @@ class _MyAppState extends State<MyApp> {
         multiple: _multipleFace,
         showText: _showTextFace,
         preview: _previewFace ?? FlutterMobileVision.PREVIEW,
+        scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
         camera: _cameraFace ?? FlutterMobileVision.CAMERA_BACK,
         fps: 15.0,
       );
