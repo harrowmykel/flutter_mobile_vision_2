@@ -344,6 +344,11 @@ class _MyAppState extends State<MyApp> {
         formats: _onlyFormatBarcode ?? Barcode.ALL_FORMATS,
         multiple: _multipleBarcode,
         waitTap: _waitTapBarcode,
+        //OPTIONAL: close camera after tap, even if there are no detection.
+        //Camera would usually stay on, until there is a valid detection
+        forceCloseCameraOnTap: true,
+        //OPTIONAL: path to save image to. leave empty if you do not want to save the image
+        imagePath: '',
         showText: _showTextBarcode,
         preview: _previewBarcode ?? FlutterMobileVision.PREVIEW,
         scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
@@ -487,6 +492,11 @@ class _MyAppState extends State<MyApp> {
         autoFocus: _autoFocusOcr,
         multiple: _multipleOcr,
         waitTap: _waitTapOcr,
+        //OPTIONAL: close camera after tap, even if there are no detection.
+        //Camera would usually stay on, until there is a valid detection
+        forceCloseCameraOnTap: true,
+        //OPTIONAL: path to save image to. leave empty if you do not want to save the image
+        imagePath: '',
         showText: _showTextOcr,
         preview: _previewOcr ?? FlutterMobileVision.PREVIEW,
         scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
@@ -618,6 +628,11 @@ class _MyAppState extends State<MyApp> {
         autoFocus: _autoFocusFace,
         multiple: _multipleFace,
         showText: _showTextFace,
+        //OPTIONAL: close camera after tap, even if there are no detection.
+        //Camera would usually stay on, until there is a valid detection
+        forceCloseCameraOnTap: true,
+        //OPTIONAL: path to save image to. leave empty if you do not want to save the image
+        imagePath: '',
         preview: _previewFace ?? FlutterMobileVision.PREVIEW,
         scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
         camera: _cameraFace ?? FlutterMobileVision.CAMERA_BACK,

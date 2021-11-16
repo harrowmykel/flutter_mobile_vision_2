@@ -67,6 +67,11 @@ public final class FaceCaptureActivity extends AbstractCaptureActivity<FaceGraph
             }
         }
 
+        if(forceCloseCameraOnTap){
+            success(list);
+            return true;
+        }
+
         if (!list.isEmpty()) {
             success(list);
             return true;

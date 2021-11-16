@@ -70,6 +70,11 @@ public final class BarcodeCaptureActivity extends AbstractCaptureActivity<Barcod
             }
         }
 
+        if(forceCloseCameraOnTap){
+            success(list);
+            return true;
+        }
+
         if (!list.isEmpty()) {
             success(list);
             return true;

@@ -41,6 +41,7 @@ public abstract class AbstractCaptureActivity<T extends GraphicOverlay.Graphic>
     public static final String FORMATS = "FORMATS";
     public static final String MULTIPLE = "MULTIPLE";
     public static final String WAIT_TAP = "WAIT_TAP";
+    public static final String FORCE_CLOSE_CAMERA_ON_TAP = "FORCE_CLOSE_CAMERA_ON_TAP";
     public static final String SHOW_TEXT = "SHOW_TEXT";
     public static final String PREVIEW_WIDTH = "PREVIEW_WIDTH";
     public static final String PREVIEW_HEIGHT = "PREVIEW_HEIGHT";
@@ -59,11 +60,11 @@ public abstract class AbstractCaptureActivity<T extends GraphicOverlay.Graphic>
     protected GraphicOverlay<ScanAreaGraphic> scanAreaOverlay;
 
     protected GestureDetector gestureDetector;
-
     protected boolean autoFocus;
     protected boolean useFlash;
     protected boolean multiple;
     protected boolean waitTap;
+    protected boolean forceCloseCameraOnTap;
     protected boolean showText;
     protected int previewWidth;
     protected int previewHeight;
@@ -92,6 +93,7 @@ public abstract class AbstractCaptureActivity<T extends GraphicOverlay.Graphic>
             useFlash = getIntent().getBooleanExtra(USE_FLASH, false);
             multiple = getIntent().getBooleanExtra(MULTIPLE, false);
             waitTap = getIntent().getBooleanExtra(WAIT_TAP, false);
+            forceCloseCameraOnTap = getIntent().getBooleanExtra(FORCE_CLOSE_CAMERA_ON_TAP, false);
             showText = getIntent().getBooleanExtra(SHOW_TEXT, false);
             previewWidth = getIntent().getIntExtra(PREVIEW_WIDTH, CameraSource.PREVIEW_WIDTH);
             previewHeight = getIntent().getIntExtra(PREVIEW_HEIGHT, CameraSource.PREVIEW_HEIGHT);

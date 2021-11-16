@@ -49,6 +49,7 @@ public class FlutterMobileVisionDelegate
     private int formats = Barcode.ALL_FORMATS;
     private boolean multiple = false;
     private boolean waitTap = false;
+    private boolean forceCloseCameraOnTap = false;
     private boolean showText = false;
     private int previewWidth = 640;
     private int previewHeight = 480;
@@ -173,6 +174,10 @@ public class FlutterMobileVisionDelegate
             waitTap = (boolean) arguments.get("waitTap");
         }
 
+        if (arguments.containsKey("forceCloseCameraOnTap")) {
+            forceCloseCameraOnTap = (boolean) arguments.get("forceCloseCameraOnTap");
+        }
+
         if (multiple) {
             waitTap = true;
         }
@@ -235,6 +240,7 @@ public class FlutterMobileVisionDelegate
         intent.putExtra(AbstractCaptureActivity.USE_FLASH, useFlash);
         intent.putExtra(AbstractCaptureActivity.FORMATS, formats);
         intent.putExtra(AbstractCaptureActivity.MULTIPLE, multiple);
+        intent.putExtra(AbstractCaptureActivity.FORCE_CLOSE_CAMERA_ON_TAP, forceCloseCameraOnTap);
         intent.putExtra(AbstractCaptureActivity.WAIT_TAP, waitTap);
         intent.putExtra(AbstractCaptureActivity.SHOW_TEXT, showText);
         intent.putExtra(AbstractCaptureActivity.PREVIEW_WIDTH, previewWidth);
