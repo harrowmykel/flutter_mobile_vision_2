@@ -59,6 +59,7 @@ class FlutterMobileVision {
     Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
     double fps = 15.0,
+    String imagePath = '',
   }) async {
     if (multiple) {
       waitTap = true;
@@ -76,6 +77,7 @@ class FlutterMobileVision {
       'scanAreaHeight': scanArea.height,
       'camera': camera,
       'fps': fps,
+      'imagePath': imagePath,
     };
 
     final List list = await _channel.invokeMethod('scan', arguments);
@@ -96,6 +98,7 @@ class FlutterMobileVision {
     Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
     double fps = 2.0,
+    String imagePath = '',
   }) async {
     Map<String, dynamic> arguments = {
       'flash': flash,
@@ -109,6 +112,7 @@ class FlutterMobileVision {
       'scanAreaHeight': scanArea.height,
       'camera': camera,
       'fps': fps,
+      'imagePath': imagePath,
     };
 
     final List list = await _channel.invokeMethod('read', arguments);
@@ -128,6 +132,7 @@ class FlutterMobileVision {
     Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
     double fps = 15.0,
+    String imagePath = '',
   }) async {
     Map<String, dynamic> arguments = {
       'flash': flash,
@@ -140,6 +145,7 @@ class FlutterMobileVision {
       'scanAreaHeight': scanArea.height,
       'camera': camera,
       'fps': fps,
+      'imagePath': imagePath,
     };
 
     final List list = await _channel.invokeMethod('face', arguments);

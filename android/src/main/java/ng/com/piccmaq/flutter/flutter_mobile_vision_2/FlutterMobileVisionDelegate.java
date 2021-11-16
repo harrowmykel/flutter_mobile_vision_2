@@ -56,6 +56,7 @@ public class FlutterMobileVisionDelegate
     private int scanAreaHeight = 0;
     private int camera = CameraSource.CAMERA_FACING_BACK;
     private float fps = 15.0f;
+    private String imagePath = "";
 
 
     private final Activity activity;
@@ -63,8 +64,6 @@ public class FlutterMobileVisionDelegate
 
     FlutterMobileVisionDelegate(final Activity activity) {
         this.activity = activity;
-
-
     }
 
     private boolean isCameraPermissionGranted() {
@@ -207,6 +206,10 @@ public class FlutterMobileVisionDelegate
             fps = (float) tfps;
         }
 
+        if (arguments.containsKey("imagePath")) {
+            imagePath = (String) arguments.get("imagePath");
+        }
+
         Class clazz;
 
         switch (callerId) {
@@ -240,6 +243,7 @@ public class FlutterMobileVisionDelegate
         intent.putExtra(AbstractCaptureActivity.SCAN_AREA_HEIGHT, scanAreaHeight);
         intent.putExtra(AbstractCaptureActivity.CAMERA, camera);
         intent.putExtra(AbstractCaptureActivity.FPS, fps);
+        intent.putExtra(AbstractCaptureActivity.IMAGE_PATH, imagePath);
 
         activity.startActivityForResult(intent, callerId);
     }
