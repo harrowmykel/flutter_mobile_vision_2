@@ -135,6 +135,7 @@ class FlutterMobileVision {
     Size preview = PREVIEW,
     Size scanArea = SCAN_AREA,
     int camera = CAMERA_BACK,
+    bool forceCloseCameraOnTap = false,
     double fps = 15.0,
     String imagePath = '',
   }) async {
@@ -147,6 +148,7 @@ class FlutterMobileVision {
       'previewHeight': preview.height,
       'scanAreaWidth': scanArea.width,
       'scanAreaHeight': scanArea.height,
+      'forceCloseCameraOnTap': forceCloseCameraOnTap,
       'camera': camera,
       'fps': fps,
       'imagePath': imagePath,

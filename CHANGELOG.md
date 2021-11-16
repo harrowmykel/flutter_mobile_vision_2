@@ -1,3 +1,7 @@
+## [0.1.12] - 2021-11-16
+
+* added imagePath and forceCloseOnTap
+
 ## [0.1.11] - 2021-07-20
 
 * updated readme.md to show migration tip
