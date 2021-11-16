@@ -12,6 +12,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.util.ArrayList;
 
+import ng.com.piccmaq.flutter.flutter_mobile_vision_2.face.MyFace;
 import ng.com.piccmaq.flutter.flutter_mobile_vision_2.ui.CameraSource;
 import ng.com.piccmaq.flutter.flutter_mobile_vision_2.util.AbstractCaptureActivity;
 import ng.com.piccmaq.flutter.flutter_mobile_vision_2.util.MobileVisionException;
@@ -54,7 +55,7 @@ public final class OcrCaptureActivity extends AbstractCaptureActivity<OcrGraphic
             return false;
         }
 
-        ArrayList<MyTextBlock> list = new ArrayList<>();
+       final ArrayList<MyTextBlock> list = new ArrayList<>();
 
         if (multiple) {
             for (OcrGraphic graphic : graphicOverlay.getGraphics()) {
@@ -68,13 +69,24 @@ public final class OcrCaptureActivity extends AbstractCaptureActivity<OcrGraphic
         }
 
         if (!list.isEmpty()) {
-            Intent data = new Intent();
-            data.putExtra(OBJECT, list);
-            setResult(CommonStatusCodes.SUCCESS, data);
-            finish();
+            success(list);
             return true;
         }
 
         return false;
+    }
+
+
+
+    private void success(final ArrayList<MyTextBlock> list) {
+        this.saveImage(new ImageSavedCallback() {
+            @Override
+            public void onImageSaved(boolean saved) {
+                Intent data = new Intent();
+                data.putExtra(OBJECT, list);
+                setResult(CommonStatusCodes.SUCCESS, data);
+                finish();
+            }
+        });
     }
 }

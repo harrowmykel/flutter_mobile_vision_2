@@ -8,6 +8,7 @@ import android.hardware.Camera;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.MultiProcessor;
+import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public final class FaceCaptureActivity extends AbstractCaptureActivity<FaceGraph
     }
 
     protected boolean onTap(float rawX, float rawY) {
-        ArrayList<MyFace> list = new ArrayList<>();
+        final ArrayList<MyFace> list = new ArrayList<>();
 
         if (multiple) {
             for (FaceGraphic graphic : graphicOverlay.getGraphics()) {
@@ -67,13 +68,22 @@ public final class FaceCaptureActivity extends AbstractCaptureActivity<FaceGraph
         }
 
         if (!list.isEmpty()) {
-            Intent data = new Intent();
-            data.putExtra(OBJECT, list);
-            setResult(CommonStatusCodes.SUCCESS, data);
-            finish();
+            success(list);
             return true;
         }
 
         return false;
+    }
+
+    private void success(final ArrayList<MyFace> list) {
+        this.saveImage(new ImageSavedCallback() {
+            @Override
+            public void onImageSaved(boolean saved) {
+                Intent data = new Intent();
+                data.putExtra(OBJECT, list);
+                setResult(CommonStatusCodes.SUCCESS, data);
+                finish();
+            }
+        });
     }
 }

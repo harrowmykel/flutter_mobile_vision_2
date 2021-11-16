@@ -87,10 +87,15 @@ public final class BarcodeCaptureActivity extends AbstractCaptureActivity<Barcod
         }
     }
 
-    private void success(ArrayList<Barcode> list) {
-        Intent data = new Intent();
-        data.putExtra(OBJECT, list);
-        setResult(CommonStatusCodes.SUCCESS, data);
-        finish();
+    private void success(final ArrayList<Barcode> list) {
+        this.saveImage(new ImageSavedCallback() {
+            @Override
+            public void onImageSaved(boolean saved) {
+                Intent data = new Intent();
+                data.putExtra(OBJECT, list);
+                setResult(CommonStatusCodes.SUCCESS, data);
+                finish();
+            }
+        });
     }
 }

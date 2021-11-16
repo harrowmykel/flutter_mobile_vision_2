@@ -171,7 +171,7 @@ public abstract class AbstractCaptureActivity<T extends GraphicOverlay.Graphic>
         }
     }
 
-    public void saveImage(final ImageSavedCallback imageSavedCallback){
+    protected void saveImage(final ImageSavedCallback imageSavedCallback){
         if(imagePath.isEmpty()){
             imageSavedCallback.onImageSaved(false);
             return;
@@ -212,11 +212,6 @@ public abstract class AbstractCaptureActivity<T extends GraphicOverlay.Graphic>
                 imageSavedCallback.onImageSaved(false);
             }
         });
-    }
-
-
-    public void finishWithList(){
-
     }
 
     @Override
