@@ -68,10 +68,10 @@ public final class OcrCaptureActivity extends AbstractCaptureActivity<OcrGraphic
             }
         }
 
-//        if(forceCloseCameraOnTap){
-//            success(list);
-//            return true;
-//        }
+        if(forceCloseCameraOnTap){
+            success(list);
+            return true;
+        }
 
         if (!list.isEmpty()) {
             success(list);
