@@ -348,7 +348,7 @@ class _MyAppState extends State<MyApp> {
         //Camera would usually stay on, until there is a valid detection
         forceCloseCameraOnTap: true,
         //OPTIONAL: path to save image to. leave empty if you do not want to save the image
-        imagePath: '',
+        imagePath: '', //'path/to/file.jpg'
         showText: _showTextBarcode,
         preview: _previewBarcode ?? FlutterMobileVision.PREVIEW,
         scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
@@ -496,7 +496,7 @@ class _MyAppState extends State<MyApp> {
         //Camera would usually stay on, until there is a valid detection
         forceCloseCameraOnTap: true,
         //OPTIONAL: path to save image to. leave empty if you do not want to save the image
-        imagePath: '',
+        imagePath: '', //'path/to/file.jpg'
         showText: _showTextOcr,
         preview: _previewOcr ?? FlutterMobileVision.PREVIEW,
         scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
@@ -632,7 +632,7 @@ class _MyAppState extends State<MyApp> {
         //Camera would usually stay on, until there is a valid detection
         forceCloseCameraOnTap: true,
         //OPTIONAL: path to save image to. leave empty if you do not want to save the image
-        imagePath: '',
+        imagePath: '', //'path/to/file.jpg'
         preview: _previewFace ?? FlutterMobileVision.PREVIEW,
         scanArea: Size(_scanpreviewOcr.width - 20, _scanpreviewOcr.height - 20),
         camera: _cameraFace ?? FlutterMobileVision.CAMERA_BACK,
