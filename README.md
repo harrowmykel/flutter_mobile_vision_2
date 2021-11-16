@@ -158,7 +158,7 @@ try {
     //Camera would usually stay on, until there is a valid detection
     forceCloseCameraOnTap: true,
     //OPTIONAL: path to save image to. leave empty if you do not want to save the image
-    imagePath: '', 
+    imagePath: '', //'path/to/file.jpg'
     showText: _showTextBarcode,
     preview: _previewBarcode,
     camera: _cameraBarcode,
