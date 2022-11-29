@@ -49,7 +49,10 @@ public class FlutterMobileVisionPlugin implements FlutterPlugin, MethodCallHandl
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
         pluginBinding = null;
-        channel.setMethodCallHandler(null);
+        if(channel != null){
+            channel.setMethodCallHandler(null);
+            // channel = null;
+        }
     }
 
 
