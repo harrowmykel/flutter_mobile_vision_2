@@ -1,3 +1,16 @@
+
+## [0.1.15] - 2022-12-6
+
+* updated changelog
+* 
+## [0.1.14] - 2022-12-6
+
+* updated changelog
+* 
+## [0.1.13] - 2022-12-6
+
+* bug fix for onDetached
+* 
 ## [0.1.12] - 2021-11-16
 
 * added imagePath and forceCloseOnTap
